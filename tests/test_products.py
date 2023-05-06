@@ -51,3 +51,6 @@ def test_product_detail_page(driver, login):
     assert driver.find_element(*InventoryPage.bag_pack_add).is_displayed(), "Add to cart button is not available"
     driver.find_element(*InventoryPage.bag_pack_add).click()
     assert driver.find_element(*InventoryPage.bag_pack_remove).is_displayed(), "Remove button is not available"
+
+def test_1():
+    pass
