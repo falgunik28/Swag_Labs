@@ -32,6 +32,3 @@ def login(driver):
 def logout(driver):
     driver.find_element(*MenuBarPage.menu_bar).click()
     driver.find_element(*MenuBarPage.logout).click()
-
-# get_driver()
-# login()
