@@ -1,0 +1,17 @@
+{
+  "base_url": "https://www.saucedemo.com/",
+  "browser": "chrome",
+  "user1": "standard_user",
+  "user2": "locked_out_user",
+  "user3": "problem_user",
+  "user4": "performance_glitch_user",
+  "wrong_user": "abcd",
+  "wrong_pwd": "abcd",
+  "password": "secret_sauce",
+  "first_name": "abcde",
+  "last_name": "fghij",
+  "postal_code": "klmnop",
+  "Error_wrong_user": "Epic sadface: Username and password do not match any user in this service",
+  "Error_locked_user": "Epic sadface: Sorry, this user has been locked out.",
+  "menu-items": ["All Items","About","Logout","Reset App State"]
+}
