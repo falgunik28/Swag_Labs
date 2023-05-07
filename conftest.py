@@ -7,28 +7,27 @@ from selenium import webdriver
 from Pages.Page_Login import LoginPage
 from Pages.Page_MenuBar import MenuBarPage
 from utility.utilities import getdata
+from selenium.webdriver.chrome.service import Service
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="function")
 def driver():
-    driver_path = Path(__file__).parent.joinpath("resources").joinpath("chromedriver.exe")
-    print(f"driver path: {driver_path}")
-    driver = webdriver.Chrome(executable_path=driver_path)
+    driver_path = str(Path(__file__).parent.joinpath("resources").joinpath("chromedriver.exe"))
+    service = Service(executable_path=driver_path)
+    driver = webdriver.Chrome(service=service)
     driver.get(getdata("base_url"))
     driver.maximize_window()
     yield driver
+    # app_reset(driver)
     driver.quit()
 
 
-@pytest.fixture(scope="session")
-def login(driver):
-    driver.find_element(*LoginPage.user_name).click()
-    driver.find_element(*LoginPage.user_name).send_keys(getdata("user1"))
-    driver.find_element(*LoginPage.password).click()
-    driver.find_element(*LoginPage.password).send_keys(getdata("password"))
-    driver.find_element(*LoginPage.login_button).click()
 
 
-def logout(driver):
-    driver.find_element(*MenuBarPage.menu_bar).click()
+
+def app_reset(driver):
+    driver.find_element(*MenuBarPage.menu_list).click()
+    driver.find_element(*MenuBarPage.app_reset).click()
     driver.find_element(*MenuBarPage.logout).click()
+    driver.find_element(*MenuBarPage.close_button).click()
+
